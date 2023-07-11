@@ -1,3 +1,5 @@
+package metaballs;
+
 import peasy.PeasyCam;
 import processing.core.PApplet;
 
@@ -24,18 +26,19 @@ public class Marching3D extends PApplet {
         cam.setMaximumDistance(1000);
 
 
-        marchingCube3D = new MarchingCube3D(20,20,20, 10);
+        marchingCube3D = new MarchingCube3D(50, 50, 50, 5);
+        marchingCube3D.fillFloatGrid();
+        marchingCube3D.calculateBooleanGrid(11f);
 
     }
 
     @Override
     public void draw() {
         background(0);
-        marchingCube3D.testCube();
-        marchingCube3D.calculateBooleanGrid(10);
-        marchingCube3D.drawBooleanGrid(this);
+
         //marchingCube3D.drawGrid(this);
 
         marchingCube3D.drawPlanes(this);
     }
+
 }

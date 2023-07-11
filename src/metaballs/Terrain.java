@@ -1,3 +1,5 @@
+package metaballs;
+
 import processing.core.PApplet;
 import processing.core.PVector;
 
@@ -75,7 +77,7 @@ public class Terrain extends PApplet{
 
 
         /*ellipseMode(RADIUS);
-        for(MetaBall b: this.balls) {
+        for(metaballs.MetaBall b: this.balls) {
             noFill();
             stroke(0);
             ellipse(b.pos.x, b.pos.y, b.r, b.r);

@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="peasy-math">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Desktop/library/peasy-math.jar!/" />
-      <root url="jar://$USER_HOME$/Desktop/library/peasycam.jar!/" />
+      <root url="jar://$USER_HOME$/peasycam/library/peasy-math.jar!/" />
+      <root url="jar://$USER_HOME$/peasycam/library/peasycam.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

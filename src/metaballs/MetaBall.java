@@ -1,3 +1,5 @@
+package metaballs;
+
 import processing.core.PApplet;
 import processing.core.PVector;
 
@@ -27,7 +29,7 @@ public class MetaBall {
     public void update(){
         this.pos.add(this.velocity);
 
-        if(pos.x > parent.width || pos.x < 0) velocity.x *= -1;
-        if(pos.y > parent.height || pos.y < 0) velocity.y *= -1;
+        if(pos.x > parent.width - 200 || pos.x < 200) velocity.x *= -1;
+        if(pos.y > parent.height -200 || pos.y < 200) velocity.y *= -1;
     }
 }

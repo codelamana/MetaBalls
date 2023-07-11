@@ -1,3 +1,5 @@
+package metaballs;
+
 public class LUT {
 
     static int[] edgeTable={

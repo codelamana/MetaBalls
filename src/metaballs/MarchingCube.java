@@ -1,3 +1,5 @@
+package metaballs;
+
 import processing.core.PApplet;
 import processing.core.PVector;
 
@@ -10,9 +12,11 @@ public class MarchingCube {
     float[][] grid;
     boolean[][] boolGrid;
 
+    float threshold;
+
     Random rand = new Random();
 
-    public MarchingCube(int width, int heigth, int size) {
+    public MarchingCube(int width, int heigth, int size, float threshold) {
         this.m = width/size + 1;
         this.n = heigth/size + 1;
 
@@ -27,6 +31,8 @@ public class MarchingCube {
             }
         }
 
+        this.threshold = threshold;
+
     }
 
     public PVector getGridPos(int i, int j){
@@ -40,7 +46,7 @@ public class MarchingCube {
     public void calculateBoolGrid(){
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                boolGrid[i][j] = grid[i][j] < 100 ? false : true;
+                boolGrid[i][j] = grid[i][j] < this.threshold ? false : true;
             }
         }
     }
@@ -86,10 +92,19 @@ public class MarchingCube {
                 if(a && b && c && d) continue;
                 if(!(a||b||c||d)) continue;
 
-                one.set(size*(i+0.5f), (j+1)*size);
+                /*one.set(size*(i+0.5f), (j+1)*size);
                 two.set(size*(i+1f), (j+.5f)*size);
                 three.set(size*(i+0.5f), (j)*size);
-                four.set(size*(i), (j+0.5f)*size);
+                four.set(size*(i), (j+0.5f)*size);*/
+
+                one = interpolate(new PVector((i)*size,(j+1)*size), new PVector((i+1)*size,
+                        (j+1)*size), grid[i][j+1], grid[i+1][j+1]);
+                two = interpolate(new PVector((i+1)*size,(j+1)*size), new PVector((i+1)*size,
+                        (j)*size), grid[i+1][j+1], grid[i+1][j]);
+                three = interpolate(new PVector((i+1)*size,(j)*size), new PVector((i)*size,
+                                (j)*size), grid[i+1][j], grid[i][j]);
+                four = interpolate(new PVector((i)*size,(j)*size), new PVector((i)*size,
+                        (j+1)*size), grid[i][j], grid[i][j+1]);
 
                 switch (caseLut(a,b,c,d)){
                     case 1: line(three, four, p);
@@ -130,10 +145,27 @@ public class MarchingCube {
     }
 
     public void line(PVector a, PVector b, PApplet p){
-        p.line(a.x, a.y, b.x, b.y);
+        p.strokeWeight(10);
+        p.beginShape();
+        //p.line(a.x, a.y, b.x, b.y);
+        p.vertex(a.x, a.y);
+        p.vertex(b.x, b.y);
+        p.endShape();
     }
 
     public int caseLut(boolean a, boolean b, boolean c, boolean d){
         return (a ? 8 : 0) + (b ? 4 : 0) + (c ? 2 : 0) + (d ? 1 : 0);
+    }
+
+    public PVector interpolate(PVector a, PVector b, float start, float end){
+
+        float t = (threshold - end)/(start - end);
+        //System.out.println(t);
+        if(t > 1 || t < 0){
+            t=0.5f;
+            return new PVector(t * a.x + (1-t) * b.x, t * a.y + (1-t) * b.y);
+        }
+
+        return new PVector(t * a.x + (1-t) * b.x, t * a.y + (1-t) * b.y);
     }
 }
