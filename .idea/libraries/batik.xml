@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="batik">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Desktop/processing-4.2/modes/java/libraries/svg/library/batik.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/processing-4.2/modes/java/libraries/svg/library/svg.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

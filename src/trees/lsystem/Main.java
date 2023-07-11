@@ -20,7 +20,7 @@ public class Main extends PApplet {
         lSystem.addRule('F', "FF-[-F+F+F]+[+F-F-F]");
         //lSystem.addRule('X', "F+[[X]-X]-F[-FX]+X");
         System.out.println(lSystem.iterate());
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i <4; i++) {
                 lSystem.iterate();
         }
 

@@ -1,2 +1,5 @@
 # Project exclude paths
 /out/
+/.idea/libraries/core.xml
+/.idea/libraries/peasycam.xml
+/.idea/libraries/batik.xml
