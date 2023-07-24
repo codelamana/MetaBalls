@@ -1,4 +1,4 @@
-package trees.lsystem;
+package trees.lsystem.l2d;
 
 import java.util.HashMap;
 

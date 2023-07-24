@@ -1,4 +1,4 @@
-package trees.lsystem;
+package trees.lsystem.l2d;
 
 import processing.core.PApplet;
 import processing.core.PVector;
