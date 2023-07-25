@@ -2,42 +2,41 @@ package trees.lsystem.l3d;
 
 import peasy.PeasyCam;
 import processing.core.PApplet;
+import processing.core.PVector;
 
-public class Main extends PApplet {
+public class LTree extends PApplet {
 
     public static void main(String[] args) {
-        PApplet.runSketch(new String[]{Main.class.getName()}, new Main());
+        PApplet.runSketch(new String[]{LTree.class.getName()}, new LTree());
     }
+
+    Tree3D tree;
 
     @Override
     public void settings() {
         size(800, 600, P3D);
     }
 
-    Tree3D tree;
-
     @Override
     public void setup() {
-        background(0);
-
-        tree = new Tree3D();
+        LSystem3D lSystem3D = new LSystem3D("F");
+        Turtle3D.State initial = new Turtle3D.State(
+                new Branch(new PVector(), new PVector(0,0,0)),
+                new PVector(),
+                new PVector(0,1,0)
+        );
+        Turtle3D turtle3D = new Turtle3D(initial, 50);
+        tree = turtle3D.walk("F/F", this);
         tree.setParent(this);
 
-        System.out.println(tree.branches.size());
-        tree.recursiveTree(
-                3, 6, 100,10,PI/4, 0.23f, 0.25f, 5);
         PeasyCam cam = new PeasyCam(this, 500);
-
-        System.out.println(tree.branches.size());
-        lights();
     }
 
     @Override
     public void draw() {
         background(0);
-        //tree.draw();
-        // tree.drawEndCircles();
-        tree.drawSurfaces();
+        tree.draw();
+        tree.drawEndCircles();
     }
 
     @Override

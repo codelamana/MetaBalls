@@ -19,8 +19,8 @@ public class Tree3D {
     public Tree3D() {
         this.branches = new ArrayList<>();
 
-        rootBranch = new Branch(new PVector(0,0,0), new PVector(0,100,0));
-        this.branches.add(rootBranch);
+        //rootBranch = new Branch(new PVector(0,0,0), new PVector(0,100,0));
+        //this.branches.add(rootBranch);
 
     }
 

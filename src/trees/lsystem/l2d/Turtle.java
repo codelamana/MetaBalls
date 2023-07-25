@@ -1,6 +1,4 @@
 package trees.lsystem.l2d;
-
-import jogamp.opengl.windows.wgl.WindowsOnscreenWGLDrawable;
 import processing.core.PApplet;
 import processing.core.PVector;
 
@@ -61,6 +59,4 @@ public class Turtle {
             }
         }
     }
-
-
 }
