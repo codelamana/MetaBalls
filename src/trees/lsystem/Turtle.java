@@ -41,7 +41,7 @@ public class Turtle {
         PVector nextPos = pos.copy();
         float angle = -(22.5f/360f) * TWO_PI;
         p.strokeWeight(1);
-        p.stroke(0);
+        p.stroke(0, 100, 0);
         for (int i = 0; i < instructions.length(); i++) { ;
             if(instructions.charAt(i) == 'F'){
                 nextPos.add(PVector.mult(dir, stepLength));

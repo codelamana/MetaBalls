@@ -10,5 +10,6 @@
     <orderEntry type="library" name="peasycam" level="project" />
     <orderEntry type="library" name="core" level="project" />
     <orderEntry type="library" name="batik" level="project" />
+    <orderEntry type="library" name="windows-amd64" level="project" />
   </component>
 </module>

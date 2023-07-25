@@ -16,20 +16,22 @@ public class Main extends PApplet {
 
     @Override
     public void setup() {
-        LSystem lSystem = new LSystem("F");
+        LSystem lSystem = new LSystem("B");
+
         lSystem.addRule('F', "FF-[-F+F+F]+[+F-F-F]");
         //lSystem.addRule('X', "F+[[X]-X]-F[-FX]+X");
         System.out.println(lSystem.iterate());
-        for (int i = 0; i <4; i++) {
+        for (int i = 0; i < 4; i++) {
                 lSystem.iterate();
         }
 
-        background(255);
+        background(200);
 
         Turtle.State init = new Turtle.State();
         init.pos = new PVector(400, height);
         init.dir = new PVector(0,-1);
         Turtle t = new Turtle(init,7);
+        stroke(0, 200, 0);
         t.walk(lSystem.currentState, this);
     }
 

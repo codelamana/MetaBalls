@@ -17,20 +17,19 @@ public class Leaf {
     }
 
     public Leaf(float x, float y, float z) {
-
+        this.pos = new PVector(x, y, z);
     }
 
     public boolean kill(ArrayList<Branch> branches){
         for(Branch b: branches){
             if(PVector.dist(b.end, this.pos) < killZone){
-                b.deactivate();
                 return true;
             }
         }
         return false;
     }
 
-    public void findNearestBranch(ArrayList<Branch> branches) {
+    public boolean findNearestBranch(ArrayList<Branch> branches) {
         Branch nearest = null;
         float record = 100000;
         for(Branch b: branches){
@@ -43,6 +42,8 @@ public class Leaf {
 
         if(nearest != null){
             nearest.addLeaf(this);
+            return true;
         }
+        return false;
     }
 }
