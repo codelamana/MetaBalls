@@ -4,9 +4,6 @@ import peasy.PeasyCam;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class Main extends PApplet {
 
     public static void main(String[] args) {
@@ -23,22 +20,18 @@ public class Main extends PApplet {
     @Override
     public void setup() {
 
-
-        // build trunk ( width/2; height to lower half of sphere)
-
-
-        tree = new Tree(this, 5000,  new PVector(0,0,0));
+        tree = new Tree(this, 500,  new PVector(0,0,0));
         tree.trunk();
-
 
         PeasyCam cam = new PeasyCam(this, 1000);
         //frameRate(2);
+
     }
 
     @Override
     public void draw() {
         background(0);
-
+        lights();
         noStroke();
         fill(100);
         beginShape(QUAD);
@@ -49,9 +42,14 @@ public class Main extends PApplet {
         endShape();
 
         // draw leafs
+        tree.drawLeafs();
         tree.growTree();
-        tree.draw();
-
+        //tree.drawLines();
+        tree.setRadii(15);
+        tree.setColors();
+        //tree.drawSurfaces();
+        //tree.drawInterSurfaces();
+        tree.drawSingleSurfaces();
         System.out.println(tree.branches.size());
 
     }

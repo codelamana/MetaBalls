@@ -6,7 +6,6 @@ import processing.core.PVector;
 import java.util.ArrayList;
 
 import static processing.core.PApplet.*;
-import static processing.core.PConstants.*;
 
 public class Tree {
 
@@ -17,6 +16,8 @@ public class Tree {
     PVector root;
 
     int n;
+
+    int prev = 0;
 
     public Tree(PApplet parent, int n, PVector root) {
         this.parent = parent;
@@ -57,7 +58,13 @@ public class Tree {
 
         if(branches.size() > 50000){
             return;
+        } else if(prev == branches.size()){
+            System.out.println("Converged");
+            leafs.clear();
+            return;
         }
+
+        prev = branches.size();
 
         for (Leaf l : leafs) {
             l.findNearestBranch(branches);
@@ -76,28 +83,52 @@ public class Tree {
             if (l.kill(branches)) removedLeafs.add(l);
         }
         leafs.removeAll(removedLeafs);
+
+
     }
 
-    public void draw() {
+    public void drawSurfaces(){
+        for(Branch b: branches){
+            b.connectSurfaces(parent);
+        }
+    }
+
+    public void drawInterSurfaces(){
+        for(Branch b: branches){
+            b.connectInterSurfaces(parent);
+        }
+    }
+
+    public void drawSingleSurfaces(){
+        for(Branch b: branches){
+            b.connectToPreviousSurfaces(parent);
+        }
+    }
+
+    public void drawLeafs(){
         parent.stroke(255);
         parent.strokeWeight(5);
 
         parent.beginShape(POINTS);
         for (Leaf p : leafs) parent.vertex(p.pos.x, p.pos.y, p.pos.z);
         parent.endShape();
+    }
 
+    public void drawLines() {
         parent.strokeWeight(4);
 
         for (Branch b : branches) {
-            /*parent.beginShape(LINE);
-            parent.vertex(b.start.x, b.start.y, b.start.z);
-            parent.vertex(b.end.x, b.end.y, b.end.z);
-            parent.endShape();*/
-            //b.drawCircle(parent);
             parent.strokeWeight(1);
             parent.line(b.start.x, b.start.y, b.start.z,b.end.x, b.end.y, b.end.z);
         }
 
+    }
+
+    void setRadii(float startRadius){
+        branches.get(0).propagateRadius(startRadius);
+    }
+    void setColors(){
+        branches.get(0).backpropagateColor();
     }
 
     void generatePoints2D(int n, PVector center, float radius) {
@@ -105,8 +136,8 @@ public class Tree {
         for (int i = 0; i < n; i++) {
             theta = parent.random(TWO_PI);
             delta = parent.random(TWO_PI);
-            d = radius * abs(sin(parent.random(0, 1)*PI/2f));
-            leafs.add(new Leaf(d * cos(theta) * sin(delta) + center.x, 2*d * sin(theta) * sin(delta) + center.y, d*cos(delta)));
+            d = radius * parent.random(0f, 1);
+            leafs.add(new Leaf(1.5f*d * cos(theta) * sin(delta) + center.x, 2f*d * sin(theta) * sin(delta) + center.y, d*cos(delta)));
         }
     }
 }
