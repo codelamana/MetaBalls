@@ -24,7 +24,8 @@ public class PerlinGrid extends PApplet {
     public void setup() {
 
         g = new Grid(width, height, 10, 100);
-        g.offset(new Sombrero());
+        //g.offset(new Sombrero());
+        g.offset(new Sines());
     }
 
 
