@@ -1,4 +1,6 @@
-package xpbd.threed.structure;
+package xpbd.threed.structure.constraints;
+
+import xpbd.threed.structure.Particle;
 
 public class FloorConstraint implements Constraint {
 
@@ -13,7 +15,7 @@ public class FloorConstraint implements Constraint {
 
     @Override
     public float solve(float dt) {
-        if(p.pos.y > height) {
+        if(p.pos.y + p.radius > height) {
             p.pos.y = height;
         }
         return 0;

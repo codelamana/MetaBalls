@@ -7,6 +7,7 @@ import processing.core.PVector;
 
 import java.util.Stack;
 
+import static processing.core.PConstants.PI;
 import static processing.core.PConstants.TWO_PI;
 
 public class Turtle3D {
@@ -57,22 +58,22 @@ public class Turtle3D {
                 currentBranch = b;
                 pos = nextPos.copy();
             } else if(instructions.charAt(i) == '-'){
-                rot.rotateZ(-angle);
+                rot.rotateZ(PI + angle);
                 rot.mult(dir, dir);
             } else if(instructions.charAt(i) == '+'){
-                rot.rotateZ(angle);
+                rot.rotateZ(PI-angle);
                 rot.mult(dir, dir);
             }  else if(instructions.charAt(i) == '/'){
-                rot.rotateX(-angle);
+                rot.rotateX(PI+angle);
                 rot.mult(dir, dir);
             } else if(instructions.charAt(i) == '\\'){
-                rot.rotateX(angle);
+                rot.rotateX(PI-angle);
                 rot.mult(dir, dir);
             }  else if(instructions.charAt(i) == '&'){
-                rot.rotateY(-angle);
+                rot.rotateY(PI+angle);
                 rot.mult(dir, dir);
             } else if(instructions.charAt(i) == '^'){
-                rot.rotateY(angle);
+                rot.rotateY(PI-angle);
                 rot.mult(dir, dir);
             } else if(instructions.charAt(i) == '[') {
                 memory.push(new State(currentBranch, pos.copy(), dir.copy()));

@@ -13,6 +13,8 @@ public class Particle {
     public float mass;
     public  float invMass;
 
+    public float radius;
+
     public boolean isFixed = false;
 
     public Particle(PVector pos, float mass) {
@@ -21,6 +23,16 @@ public class Particle {
         this.vel = new PVector();
         this.mass = mass;
         this.invMass = 1/mass;
+        radius = 5;
+    }
+
+    public Particle(PVector pos, float mass, float radius) {
+        this.pos = pos;
+        this.prevPos = pos.copy();
+        this.vel = new PVector();
+        this.mass = mass;
+        this.invMass = 1/mass;
+        this.radius = radius;
     }
 
     public void applyGravity(float dt){

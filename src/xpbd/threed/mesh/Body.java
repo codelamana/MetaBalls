@@ -1,15 +1,13 @@
 package xpbd.threed.mesh;
 
-import org.apache.batik.anim.dom.TraitInformation;
 import processing.core.PVector;
-import xpbd.threed.structure.Constraint;
-import xpbd.threed.structure.DistanceConstraint;
+import xpbd.threed.structure.constraints.Constraint;
+import xpbd.threed.structure.constraints.DistanceConstraint;
 import xpbd.threed.structure.Particle;
 import xpbd.threed.structure.ParticleSystem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Vector;
 
 public class Body {
 

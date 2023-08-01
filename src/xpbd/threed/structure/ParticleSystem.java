@@ -2,6 +2,7 @@ package xpbd.threed.structure;
 
 import processing.core.PApplet;
 import processing.core.PVector;
+import xpbd.threed.structure.constraints.*;
 
 import java.util.ArrayList;
 

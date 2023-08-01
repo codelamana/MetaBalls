@@ -1,15 +1,16 @@
-package xpbd.threed.structure;
+package xpbd.threed.structure.constraints;
 
 import processing.core.PVector;
+import xpbd.threed.structure.Particle;
 
 import java.util.ArrayList;
 
 public class SphereConstraint implements Constraint{
 
-    float radius;
-    PVector pos;
+    public float radius;
+    public PVector pos;
 
-    ArrayList<Particle> particles = new ArrayList<>();
+    public ArrayList<Particle> particles = new ArrayList<>();
 
     public SphereConstraint(float radius, PVector pos, ArrayList<Particle> particles) {
         this.radius = radius;

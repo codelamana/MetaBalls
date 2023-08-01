@@ -22,15 +22,22 @@ public class Tree {
     public Tree(PApplet parent, int n, PVector root) {
         this.parent = parent;
         this.n = n;
+        this.root = root.copy();
+        generatePoints2Duniform(n, new PVector(root.x, root.y - 350, root.z), 250);
+        System.out.println(this.root);
+    }
+
+    public Tree(PApplet parent, int n, PVector root, ArrayList<Leaf> newLeafs) {
+        this.parent = parent;
+        this.n = n;
         this.root = root;
+        this.leafs = newLeafs;
     }
 
 
     public void trunk() {
-
-        generatePoints2D(n, new PVector(root.x, root.y - 200f*(float) Math.random() - 300, root.y), 150);
-
         //root = new PVector(0,0,0);
+        System.out.println(leafs.size());
         PVector dir = new PVector(0, -10, 0);
 
         PVector tempStart = root.copy();
@@ -114,6 +121,12 @@ public class Tree {
         parent.endShape();
     }
 
+    public void drawAttachedLeafs(){
+        for(Branch b: this.branches){
+            b.drawAttachedLeafs(parent);
+        }
+    }
+
     public void drawLines() {
         parent.strokeWeight(4);
 
@@ -132,12 +145,26 @@ public class Tree {
     }
 
     void generatePoints2D(int n, PVector center, float radius) {
+        System.out.println("Center" + center);
         float theta, delta,  d;
         for (int i = 0; i < n; i++) {
             theta = parent.random(TWO_PI);
             delta = parent.random(TWO_PI);
             d = radius * parent.random(0f, 1);
-            leafs.add(new Leaf(1.5f*d * cos(theta) * sin(delta) + center.x, 2f*d * sin(theta) * sin(delta) + center.y, d*cos(delta)));
+            leafs.add(new Leaf(1.5f*d * cos(theta) * sin(delta) + center.x, d * sin(theta) * sin(delta) + center.y, d*cos(delta) + center.z));
+        }
+    }
+
+    void generatePoints2Duniform(int n, PVector center, float radius) {
+        System.out.println("Center" + center);
+        float theta, delta,  d;
+        for (int i = 0; i < n; i++) {
+            theta = (float) (2 * TWO_PI * Math.random());
+            delta = (float) Math.acos(Math.random() * 2 -1);
+            d = (float) (radius * Math.cbrt(Math.random()));
+            leafs.add(new Leaf( d * cos(theta) * sin(delta) + center.x,
+                                d * sin(theta) * sin(delta) + center.y,
+                                d * cos(delta) + center.z));
         }
     }
 }

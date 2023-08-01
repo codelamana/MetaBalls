@@ -1,13 +1,13 @@
-package xpbd.threed.structure;
+package xpbd.threed.structure.constraints;
 
 import processing.core.PApplet;
 import processing.core.PVector;
-
+import xpbd.threed.structure.Particle;
 
 
 public class JointBendingConstraint implements Constraint{
 
-    Particle p1, p2, p3; // p2 is connecting particle;
+    public Particle p1, p2, p3; // p2 is connecting particle;
     PVector d1, d3, gradP1, gradP3;
     PVector crossD1D3;
     float restAngle;

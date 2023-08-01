@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="colorharmony">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/colorharmony/library/colorharmony.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

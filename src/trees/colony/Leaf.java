@@ -8,7 +8,7 @@ public class Leaf {
 
     PVector pos;
 
-    float killZone = 20;
+    float killZone = 35;
 
     float max_radius = 200;
 

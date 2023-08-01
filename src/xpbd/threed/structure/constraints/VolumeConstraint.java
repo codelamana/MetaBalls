@@ -1,4 +1,6 @@
-package xpbd.threed.structure;
+package xpbd.threed.structure.constraints;
+
+import xpbd.threed.structure.Particle;
 
 import java.util.ArrayList;
 

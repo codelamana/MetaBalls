@@ -1,4 +1,4 @@
-package xpbd.threed.structure;
+package xpbd.threed.structure.constraints;
 
 public interface Constraint {
 

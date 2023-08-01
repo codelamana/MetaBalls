@@ -1,9 +1,12 @@
 package grids;
 
+import com.cage.colorharmony.ColorHarmony;
 import grids.concreteoffsets.Sines;
 import grids.concreteoffsets.Sombrero;
 import processing.core.PApplet;
 import processing.core.PVector;
+
+import java.util.ArrayList;
 
 public class PerlinGrid extends PApplet {
 
@@ -12,6 +15,8 @@ public class PerlinGrid extends PApplet {
     }
 
     Grid g;
+
+    ColorHarmony harmony  = new ColorHarmony(this);
 
     @Override
     public void settings() {
@@ -24,8 +29,11 @@ public class PerlinGrid extends PApplet {
     public void setup() {
 
         g = new Grid(width, height, 10, 100);
+        g.setColorHarmony(harmony);
         //g.offset(new Sombrero());
         g.offset(new Sines());
+
+
     }
 
 
@@ -34,5 +42,6 @@ public class PerlinGrid extends PApplet {
         background(0);
         g.drawHorizontalLines(this);
         g.drawVerticalLines(this);
+
     }
 }

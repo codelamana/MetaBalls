@@ -1,6 +1,7 @@
-package xpbd.threed.structure;
+package xpbd.threed.structure.constraints;
 
 import processing.core.PVector;
+import xpbd.threed.structure.Particle;
 
 public class DistanceConstraint implements Constraint {
 
